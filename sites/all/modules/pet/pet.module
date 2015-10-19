@@ -1,0 +1,21 @@
+<?php
+	function pet_menu() {
+		$items = array();
+		$items['pet'] = array(
+			'title' => 'My Favorite Type of Pet',
+			'page callback' => 'favorite_pet',
+			'access callback' => TRUE,
+			'type' => MENU_NORMAL_ITEM,
+		);
+		return $items;
+	}
+	
+	function favorite_pet() {
+		return '
+		<h2>Clifford The Big Red Dog</h2>
+		<img src="http://vignette2.wikia.nocookie.net/clifford/images/8/85/Clifford.jpg/revision/latest?cb=20121209212057"
+		height="500px">
+		<br>
+		<a href="http://clifford.wikia.com/wiki/Clifford">More info</a>';
+	} 
+?>

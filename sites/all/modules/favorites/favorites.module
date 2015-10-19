@@ -1,0 +1,56 @@
+<?php
+	function favorites_menu() {
+		$items = array();
+		$items['favorite_movies'] = array(
+			'title' => 'Favorite Movies',
+			'page callback' => 'favorite_movies',
+			'access callback' => TRUE,
+			'type' => MENU_NORMAL_ITEM,
+		);
+		
+		$items['favorite_books'] = array(
+			'title' => 'Favorite Books',
+			'page callback' => 'favorite_books',
+			'access callback' => TRUE,
+			'type' => MENU_NORMAL_ITEM,
+		);
+		
+		$items['favorite_songs'] = array(
+			'title' => 'Favorite Songs',
+			'page callback' => 'favorite_songs',
+			'access callback' => TRUE,
+			'type' => MENU_NORMAL_ITEM,
+		);
+		return $items;
+	} 
+	
+	function favorite_movies() {
+		return '
+		<ul>
+			<li>Inception</li>
+			<li>Fight Club</li>
+			<li>District 9</li>
+		</ul>
+		';
+	}
+	
+	function favorite_books() {
+		return '
+		<ul>
+			<li>One Hundred Years of Solitude</li>
+			<li>War and Peace</li>
+			<li>The Alchemist</li>
+		</ul>
+		';
+	}
+	
+	function favorite_songs() {
+		return '
+		<ul>
+			<li>One More Time by Daft Punk</li>
+			<li>Break From Toronto by PARTYNEXTDOOR</li>
+			<li>1 Guarda by Visionist</li>
+		</ul>
+		';
+	}
+?>

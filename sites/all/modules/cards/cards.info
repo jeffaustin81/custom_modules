@@ -1,0 +1,5 @@
+name = Cards
+description = Display greetings for different Friends.
+package = Epicodus Examples
+core = 7.x
+files[] = cards.module

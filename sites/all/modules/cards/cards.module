@@ -1,0 +1,22 @@
+<?php
+	function cards_menu() {
+		$friends = ['Jeff', 'John', 'Jim'];
+		$items = array();
+		
+		foreach($friends as $friend) {
+			$items['cards/' . $friend] = array(
+				'title' => $friend,
+				'page callback' => 'friend_display',
+				'page arguments' => array($friend),
+				'access callback' => TRUE,
+				'type' => MENU_NORMAL_ITEM,
+			);
+		}
+		return $items;
+		
+	} 
+	
+	function friend_display($friend) {
+		return '<h2>Greetings ' . $friend . '</h2>';
+	}
+?>
