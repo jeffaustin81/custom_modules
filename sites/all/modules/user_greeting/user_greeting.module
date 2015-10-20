@@ -1,0 +1,28 @@
+<?php
+
+  function user_greeting_menu() {
+    $items = array();
+    $items['splash'] = array(
+      'title' => 'Hello !',
+      'page callback' => 'say_hello2',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+
+    return $items;
+  }
+
+  function say_hello2() {
+    global $user;
+    if (in_array("administrator", $user->roles)) {
+      return "Welcome " . $user->name . " you are logged in! Your email address is " . $user->mail;
+    } else(in_array("authinicated_user", $user->roles)) {
+      return $user->name . "You are a authinicated user. Your email address is " . $user->mail;
+    }
+  }
+
+  function user_greeting_user_login() {
+
+    $_GET['destination'] = 'splash';
+
+  }

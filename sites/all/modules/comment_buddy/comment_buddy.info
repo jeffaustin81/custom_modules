@@ -1,0 +1,5 @@
+name = Comment Buddy
+description = Display Comments.
+package = Epicodus Examples
+core = 7.x
+files[] = comment_buddy.module

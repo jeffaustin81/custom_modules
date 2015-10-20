@@ -1,0 +1,41 @@
+<?php
+  //
+
+  // function comment_buddy_menu() {
+
+  // $comment_action = array();
+  // $comment_action['insert'] = "Thank you! Comment submitted!";
+  // $comment_action['delete'] = "Comment deleted. Good work eating your words";
+  // $comment_action['update'] = "Your comment has been changed";
+  //
+  //   $items = array();
+  //
+  //   foreach($comment_action as $key => $value) {
+  //     $items['comment/' . $key] = array(
+  //       'title' => "Message Changed",
+  //       'page arguments' => array($value),
+  //       'page callback' => 'message',
+  //       'access callback' => TRUE,
+  //       'type' => MENU_CALLBACK,
+  //     );
+  //
+  //   }
+  //
+  //   return $comment_action;
+  // }
+  //
+  // function message($value) {
+  //   return drupal_set_message($value);
+  // }
+
+  function comment_buddy_comment_insert() {
+    return drupal_set_message("Thank you! Comment submitted!");
+  }
+
+  function comment_buddy_comment_delete() {
+    return drupal_set_message("Comment deleted. Good work eating your words");
+  }
+
+  function comment_buddy_comment_update() {
+    return drupal_set_message("Your comment has been changed");
+  }
