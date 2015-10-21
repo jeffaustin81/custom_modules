@@ -1,0 +1,5 @@
+name = Title Case
+description = Title cases input.
+package = Epicodus Examples
+core = 7.x
+files[] = title_case.module
