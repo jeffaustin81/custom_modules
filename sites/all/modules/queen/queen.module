@@ -1,0 +1,87 @@
+<?php
+
+function queen_menu() {
+    $items = array();
+    $items['queen'] = array(
+        'title' => 'Queen Check',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('queen_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+        $items['queen_success_page'] = array(
+        'title' => 'Can You?',
+        'page callback' => 'queen_success',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function queen_form() {
+
+    $form['queens_column'] = array(
+        '#title' => 'Queens Column',
+        '#type' => 'select',
+        '#options' => array('a','b','c','d','e','f','g','h'),
+        '#description' => t('Please enter queens column.'),
+    );
+
+    $form['queens_row'] = array(
+        '#title' => 'Queens Row',
+        '#type' => 'select',
+        '#options' => array(1,2,3,4,5,6,7,8),
+        '#description' => t('Please enter queens row.'),
+    );
+
+    $form['pieces_column'] = array(
+        '#title' => 'Piece Column',
+        '#type' => 'select',
+        '#options' => array('a','b','c','d','e','f','g','h'),
+        '#description' => t('Please enter piece column.'),
+    );
+
+    $form['pieces_row'] = array(
+        '#title' => 'Piece Row',
+        '#type' => 'select',
+        '#options' => array(1,2,3,4,5,6,7,8),
+        '#description' => t('Please enter piece row.'),
+    );
+
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Go',
+    );
+
+    return $form;
+}
+
+function queen_form_submit($form, &$form_state) {
+
+    $queens_row = $form_state['values']['queens_row'];
+    $queens_column = $form_state['values']['queens_column'];
+
+    $pieces_row = $form_state['values']['pieces_row'];
+    $pieces_column = $form_state['values']['pieces_column'];
+
+    $output = "";
+
+    if ($queens_row === $pieces_row || $queens_column === $pieces_column) {
+      $output = "Yes";
+    } elseif(abs($queens_row - $pieces_row) === abs($queens_column - $pieces_column)){
+      $output = "Yes";
+    } else{
+      $output = "No";
+    }
+
+    $_SESSION['test'] = $pieces_row;
+    $_SESSION['queen_output'] = $output;
+    $form_state['redirect'] = 'queen_success_page';
+}
+
+function queen_success() {
+    $test = $_SESSION['test'];
+    $result = $_SESSION['queen_output'];
+    $output_string = $result . " you can take that piece with the queen!" . $test;
+    return $output_string;
+}

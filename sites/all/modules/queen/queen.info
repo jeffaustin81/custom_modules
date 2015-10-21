@@ -1,0 +1,5 @@
+name = Queen Check
+description = Checks if queen can take a piece.
+package = Epicodus Examples
+core = 7.x
+files[] = queen.module
